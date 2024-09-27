@@ -16,7 +16,7 @@ def home():
 
 
 
-
+ # Load the trained model
 
 class InsuranceDataSchema(BaseModel):
     Gender: str
@@ -30,3 +30,25 @@ class InsuranceDataSchema(BaseModel):
     Policy_Sales_Channel: float
     Vintage: int
     Response: int
+
+
+@app.post("/predict/rf/")
+def rf_predict(predict_values:ml_model_schema):
+    load_model = pickle.load(open("RF_model.pkl","rb"))
+
+    # predict_values -> gelen verileri bir dataframe'e çeviriyoruz.
+    # predict_values.dict().values() -> gelen verilerin değerlerini alıyoruz.
+    df = pd.DataFrame(
+        [predict_values.dict().values()],
+        columns=predict_values.dict().keys()
+        )
+    # print(df)
+    predict =load_model.predict(df)
+    return {"Predict":int(predict[0])}
+
+@app.post("/predict/qgb/")
+def LR_predict(predict_values:ml_model_schema):
+    load_model = pickle.load(open("qgb_model.pkl","rb"))
+    df = pd.DataFrame([predict_values.dict().values()],columns=predict_values.dict().keys())
+    predict =load_model.predict(df)
+    return {"Predict":int(predict[0])}

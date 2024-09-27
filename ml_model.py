@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import sqlite3 as sql
 from sklearn.model_selection import train_test_split
+from xgboost import XGBClassifier
 
 my_query = "SELECT * FROM insurance_train"
 
@@ -34,6 +35,5 @@ RF_model.fit(X_train, y_train)
 xgb = XGBClassifier()
 xgb.fit(X_train, y_train)
 
-print(f"{knn.score(x_test,y_test)}")
-print(f"{xgb.score(x_test,y_test)}")
-
+print(f"{RF_model.score(X_test,y_test)}")
+print(f"{xgb.score(X_test,y_test)}")
