@@ -4,19 +4,16 @@ from main import app
 
 client = TestClient(app)
 
-def test_rf_predict():
+def test_nb_predict():
     payload = {
-        "Gender": "Male",
         "Age": 28,
-        "Driving_License": 1 ,
-        "Region_Code": 11,
+        "Driving_License": 1,
+        "Region_Code": 11.0,
         "Previously_Insured": 1,
-        "Vehicle_Age": "< 1 Year",
-        "Vehicle_Damage": "No",
         "Annual_Premium": 12000,
         "Policy_Sales_Channel": 26.0,
-        "Vintage": 435,
-        
+        "Vintage": 435
+
     }
     response = client.post("/predict/NB/",json=payload)
 
@@ -31,17 +28,14 @@ def test_rf_predict():
 
 def test_qgb_predict():
     payload = {
-        "Gender": "Male",
         "Age": 28,
-        "Driving_License": 1 ,
-        "Region_Code": 11,
+        "Driving_License": 1,
+        "Region_Code": 11.0,
         "Previously_Insured": 1,
-        "Vehicle_Age": > "< 1 Year",
-        "Vehicle_Damage": "No",
         "Annual_Premium": 12000,
         "Policy_Sales_Channel": 26.0,
-        "Vintage": 435,
-        
+        "Vintage": 435
+
         }
     response = client.post("/predict/qgb/",json=payload)
 

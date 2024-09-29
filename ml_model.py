@@ -17,16 +17,11 @@ connection.close
 num =['id', 'Age', 'Driving_License', 'Region_Code', 'Previously_Insured', 'Annual_Premium', 'Policy_Sales_Channel', 'Vintage', 'Response']
 not_num = ['Gender', 'Vehicle_Age', 'Vehicle_Damage']
 
-data =pd.get_dummies(df, columns=not_num,drop_first=True)
 
-data.rename(columns={
-    'Vehicle_Age_< 1 Year': 'Vehicle_Age_greater 1 Year',
-    'Vehicle_Age_> 2 Years': 'Vehicle_Age_lesser 2 Years',
-    'Vehicle_Damage_Yes': 'Vehicle_Damage_Yes'
-}, inplace=True)
 
-X = data.drop(['Response','id'], axis=1)
-y = data['Response']
+X = df.drop(['Response','id','Gender', 'Vehicle_Age', 'Vehicle_Damage'], axis=1)
+y = df['Response']
+print(X.columns)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25 , random_state=1)
 
