@@ -16,7 +16,7 @@ def test_rf_predict():
         "Annual_Premium": 12000,
         "Policy_Sales_Channel": 26.0,
         "Vintage": 435,
-        "Response": 1
+        
     }
     response = client.post("/predict/NB/",json=payload)
 
@@ -41,7 +41,7 @@ def test_qgb_predict():
         "Annual_Premium": 12000,
         "Policy_Sales_Channel": 26.0,
         "Vintage": 435,
-        "Response": 1
+        
         }
     response = client.post("/predict/qgb/",json=payload)
 
