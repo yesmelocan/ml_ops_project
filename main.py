@@ -33,7 +33,7 @@ class InsuranceDataSchema(BaseModel):
 
 
 @app.post("/predict/NB/")
-def NB_predict(predict_values:ml_model_schema):
+def NB_predict(predict_values:InsuranceDataSchema):
     load_model = pickle.load(open("NB_model.pkl","rb"))
 
     # predict_values -> gelen verileri bir dataframe'e çeviriyoruz.
@@ -47,7 +47,7 @@ def NB_predict(predict_values:ml_model_schema):
     return {"Predict":int(predict[0])}
 
 @app.post("/predict/qgb/")
-def LR_predict(predict_values:ml_model_schema):
+def LR_predict(predict_values:InsuranceDataSchema):
     load_model = pickle.load(open("qgb_model.pkl","rb"))
     df = pd.DataFrame([predict_values.dict().values()],columns=predict_values.dict().keys())
     predict =load_model.predict(df)
