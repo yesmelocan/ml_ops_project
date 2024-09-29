@@ -32,9 +32,9 @@ class InsuranceDataSchema(BaseModel):
     Response: int
 
 
-@app.post("/predict/rf/")
-def rf_predict(predict_values:ml_model_schema):
-    load_model = pickle.load(open("RF_model.pkl","rb"))
+@app.post("/predict/NB/")
+def NB_predict(predict_values:ml_model_schema):
+    load_model = pickle.load(open("NB_model.pkl","rb"))
 
     # predict_values -> gelen verileri bir dataframe'e çeviriyoruz.
     # predict_values.dict().values() -> gelen verilerin değerlerini alıyoruz.

@@ -18,7 +18,7 @@ def test_rf_predict():
         "Vintage": 435,
         "Response": 1
     }
-    response = client.post("/predict/rf/",json=payload)
+    response = client.post("/predict/NB/",json=payload)
 
     assert response.status_code == 200
 
