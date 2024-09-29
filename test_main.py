@@ -14,7 +14,7 @@ def test_rf_predict():
         "Vehicle_Age": 14,
         "Vehicle_Damage": "No",
         "Annual_Premium": 12000,
-        "Policy_Sales_Channel": "float",
+        "Policy_Sales_Channel": 26.0,
         "Vintage": 435,
         "Response": 1
     }
@@ -39,11 +39,11 @@ def test_qgb_predict():
         "Vehicle_Age": 14,
         "Vehicle_Damage": "No",
         "Annual_Premium": 12000,
-        "Policy_Sales_Channel": "float",
+        "Policy_Sales_Channel": 26.0,
         "Vintage": 435,
         "Response": 1
         }
-    response = client.post("/pridict/qgb/",json=payload)
+    response = client.post("/predict/qgb/",json=payload)
 
     assert response.status_code == 200
     assert "Predict" in response.json()
