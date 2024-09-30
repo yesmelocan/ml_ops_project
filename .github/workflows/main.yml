@@ -72,7 +72,7 @@ jobs:
         PROJECT_ID: ${{ secrets.PROJECT_ID }}
       run: |
         gcloud auth configure-docker us-west1-docker.pkg.dev
-        docker build -t us-west1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest .
+        docker -f Dockerfile.yaml -t us-west1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest .
         docker push us-west1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest
 
     - name: Deploy to Cloud Run
