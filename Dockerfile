@@ -16,6 +16,6 @@ RUN pip install update pip && pip install -r requirements.txt
 EXPOSE 8000
 
 # Uygulamayı çalıştırmak için gerekli komut
-CMD ["uvicorn", "main:app", "--host=0.0.0.0", "--port=8000"]
+CMD ["uvicorn", "smain:app", "--host=0.0.0.0", "--port=8000"]
 
 
