@@ -8,7 +8,7 @@ RUN mkdir /app
 WORKDIR /app 
 
 #Gerekli dosyaları kopyaladık
-COPY requirements.txt main.py xgb_model.pkl rf_model.pkl /app/
+COPY requirements.txt main.py qgb_model.pkl NB_model.pkl /app/
 
 # Gerekli kütüphaneleri yükledik
 RUN pip install update pip && pip install -r requirements.txt 
