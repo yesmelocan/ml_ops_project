@@ -71,17 +71,17 @@ jobs:
       env:
         PROJECT_ID: ${{ secrets.PROJECT_ID }}
       run: |
-        gcloud auth configure-docker us-central1-docker.pkg.dev
-        docker build -t us-central1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest .
-        docker push us-central1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest
+        gcloud auth configure-docker us-west1-docker.pkg.dev
+        docker build -t us-west1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest .
+        docker push us-west1-docker.pkg.dev/${PROJECT_ID}/mlops-project/all_ml_api_image:latest
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy fastapi \
-          --image=us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/fastapi/all_ml_api_image:latest \
+          --image=us-west1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/fastapi/all_ml_api_image:latest \
           --allow-unauthenticated \
           --port=8000 \
           --service-account=${{ secrets.SERVICE_ACCOUNT }} \
           --max-instances=10 \
-          --region=us-central1 \
+          --region=us-west1 \
           --project=${{ secrets.PROJECT_ID }}
